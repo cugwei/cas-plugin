@@ -34,13 +34,13 @@ THE SOFTWARE.
 	<artifactId>cas-plugin</artifactId>
 	<version>1.2.1-SNAPSHOT</version>
 	<packaging>hpi</packaging>
-	<name>CAS Plugin</name>
+	<name>CAS Plugin（For Sina）</name>
 	<url>http://wiki.jenkins-ci.org/display/JENKINS/CAS+Plugin</url>
 
 	<scm>
-		<connection>scm:git:ssh://github.com/jenkinsci/cas-plugin.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/jenkinsci/cas-plugin.git</developerConnection>
-		<url>https://github.com/jenkinsci/cas-plugin</url>
+		<connection>scm:git:ssh://github.com/cugwei/cas-plugin.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/cugwei/cas-plugin.git</developerConnection>
+		<url>https://github.com/cugwei/cas-plugin.git</url>
 	  <tag>HEAD</tag>
   </scm>
 

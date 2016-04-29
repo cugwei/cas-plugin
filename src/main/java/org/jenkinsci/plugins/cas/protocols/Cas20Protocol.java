@@ -9,11 +9,11 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.jasig.cas.client.validation.Cas20ProxyTicketValidator;
-import org.jasig.cas.client.validation.Cas20ServiceTicketValidator;
 import org.jasig.cas.client.validation.ProxyList;
 import org.jasig.cas.client.validation.TicketValidator;
 import org.jenkinsci.plugins.cas.CasProtocol;
 import org.kohsuke.stapler.DataBoundConstructor;
+import org.jenkinsci.plugins.cas.validation.Cas20SinaParsingTicketValidator;
 
 /**
  * CAS 2.0 protocol support.
@@ -54,7 +54,7 @@ public class Cas20Protocol extends CasProtocol {
 			}
 			return ptv;
 		} else {
-			return new Cas20ServiceTicketValidator(casServerUrl);
+			return new Cas20SinaParsingTicketValidator(casServerUrl);
 		}
 	}
 
