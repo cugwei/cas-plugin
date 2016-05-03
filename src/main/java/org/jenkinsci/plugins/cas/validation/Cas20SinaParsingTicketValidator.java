@@ -101,7 +101,15 @@ public class Cas20SinaParsingTicketValidator extends AbstractCasProtocolUrlBased
         final Map<String, Object> attributes = extractCustomAttributes(response);
 
         String sn_name = (String) attributes.get("name");
+            
+        String sn_id = (String) attributes.get("username");
+        if (isValueNotBlank(sn_name) && isValueNotBlank(sn_id)) {
+            sn_name = sn_name.replace(sn_id, "");
+            attributes.put("name", sn_name);
+        }
+        
         String sn_tel = (String) attributes.get("telephone");
+        
         String sn_name_tel = principal;
         
         if (isValueNotBlank(sn_name) && isValueNotBlank(sn_tel)) {
