@@ -73,7 +73,7 @@ public class Cas20SinaParsingTicketValidator extends AbstractCasProtocolUrlBased
     }
 
     protected boolean isValueNotBlank(String value) {
-        return CommonUtils.isNotBlank(value) && !("null".equals(value));
+        return CommonUtils.isNotBlank(value) && !("null".equals(value)) && !("0000".equals(value));
     }
 
     protected final Assertion parseResponseFromServer(final String response) throws TicketValidationException {
