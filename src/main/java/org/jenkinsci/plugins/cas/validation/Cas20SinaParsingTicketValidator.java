@@ -73,7 +73,7 @@ public class Cas20SinaParsingTicketValidator extends AbstractCasProtocolUrlBased
     }
 
     protected boolean isValueNotBlank(String value) {
-        return CommonUtils.isNotBlank(value) && !("null".equals(value)) && !("0000".equals(value));
+        return CommonUtils.isNotBlank(value) && !("null".equals(value)) && !("0000".equals(value)) && !("0".equals(value));
     }
 
     protected final Assertion parseResponseFromServer(final String response) throws TicketValidationException {
@@ -83,6 +83,26 @@ public class Cas20SinaParsingTicketValidator extends AbstractCasProtocolUrlBased
             throw new TicketValidationException(error);
         }
 
+        /*
+        <?xml version="1.0" encoding="GB2312" ?>
+<user>
+    <info>
+        <username>12222</username>
+        <email>cxxxx</email>
+        <uid>00525D57-9AB9-49CE-8CB4-C652A8F3C742</uid>
+        <fullemail>cxxx@staff.wxxxxxx</fullemail>
+        <name>张三xxx</name>
+        <erpname>张三xxx</erpname>
+        <organization>部门</organization>
+        <organizationt3>汇报线</organizationt3>
+        <telephone>1234</telephone>
+    </info>
+  <acl></acl>
+</user>
+<!-- 技术联系人：xxxx(eeeee@,1234) -->
+        */
+
+        // String principal = XmlUtils.getTextForElement(response, "email");
         final String principal = XmlUtils.getTextForElement(response, "email");
         final String proxyGrantingTicketIou = XmlUtils.getTextForElement(response, "proxyGrantingTicket");
 
@@ -99,6 +119,15 @@ public class Cas20SinaParsingTicketValidator extends AbstractCasProtocolUrlBased
 
         final Assertion assertion;
         final Map<String, Object> attributes = extractCustomAttributes(response);
+
+        // if (principal.equals("chengwei2")) {
+        //     principal = "cibot";
+
+        //     attributes.put("email", "cibot");
+        //     attributes.put("fullemail", "cibot@staff.sina.com.cn");
+        //     attributes.put("name", "cibot");
+        //     attributes.put("erpname", "cibot");
+        // }
 
         String sn_name = (String) attributes.get("name");
             
